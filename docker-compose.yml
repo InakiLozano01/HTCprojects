@@ -1,0 +1,31 @@
+services:
+
+  web:
+    build: .
+    container_name: php-container
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - ./html:/var/www/html
+    links:
+      - db
+    depends_on:
+      - db
+
+  db:
+    image: mysql:latest
+    container_name: mysql-container
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Congreso180
+      MYSQL_DATABASE: perfexdb
+      MYSQL_USER: userHTC
+      MYSQL_PASSWORD: Congreso180
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
