@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y \
     libzip-dev \
     libc-client-dev \
     libkrb5-dev \
+    mc \
     && rm -rf /var/lib/apt/lists/*
 
 # Configure the necessary PHP extensions
