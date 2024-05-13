@@ -33,6 +33,7 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
     && docker-php-ext-install gd imap zip mysqli
 
+#
 # Assuming Perfex-CRM root is located in 'pwd'/perfex_crm
 # Copy your application code to the container (assuming your code is in the current directory)
 RUN a2enmod rewrite
