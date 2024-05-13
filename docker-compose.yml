@@ -18,8 +18,8 @@ services:
     container_name: mysql-container
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: Congreso180
-      MYSQL_DATABASE: perfexdb
+      MYSQL_ROOT_PASSWORD: Congreso180.*
+      MYSQL_DATABASE: proyectoshtc
       MYSQL_USER: userHTC
       MYSQL_PASSWORD: Congreso180
     ports:
@@ -29,3 +29,4 @@ services:
 
 volumes:
   db_data:
+  
