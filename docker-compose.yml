@@ -2,7 +2,8 @@ services:
 
   web:
     build: .
-    container_name: php-container
+    image: proyectoshtc:v1.0
+    container_name: proyectoshtc
     restart: always
     ports:
       - "80:80"
@@ -12,6 +13,9 @@ services:
       - db
     depends_on:
       - db
+    networks:
+      - internet
+      - dbnet
 
   db:
     image: mysql:latest
@@ -26,7 +30,15 @@ services:
       - "3306:3306"
     volumes:
       - db_data:/var/lib/mysql
+      - ./custommy/my.cnf:/etc/mysql/conf.d/my.cnf
+    entrypoint: sh -c "chmod 644 /etc/mysql/conf.d/my.cnf && docker-entrypoint.sh mysqld"
+    networks:
+      - dbnet
 
 volumes:
   db_data:
   
+networks:
+  internet:
+  dbnet:
+    internal: true
